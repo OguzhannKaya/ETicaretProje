@@ -1,0 +1,13 @@
+﻿@using ETicaretProje.Controllers
+@model Class1
+@{
+    ViewData["Title"] = "AddUser";
+}
+
+<form method="post">
+    <label>Kullanıcı Adı Soyadı</label>
+    <input type="text" asp-for="@Model.Name" class="form-control" />
+    <br />
+    <button type="submit" class="btn btn-info">Kullanıcı Ekle</button>
+</form>
+

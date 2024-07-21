@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ETicaret.Entities.Category>
+@{
+    ViewData["Title"] = "Kategoriler";
+}
+
+<div class="container mt-1">
+    <div class="card p-4 shadow-sm">
+        <h1 class="category-title mt-0">Kategoriler</h1>
+        <p class="small">4 farklı kategoride paketlerimiz aşağıdadır.</p>
+        <hr />
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img class="card-img-top" src="/Img/Categories/@item.Image" alt="@item.Name">
+                        <div class="card-body">
+                            <h5 class="card-title text-center fw-bold">@item.Name</h5>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <div class="d-grid">
+                                <a class="btn custom-btn btn-sm" href="/Kategoriler/Index/@item.Id">İncele</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border: none;
+    }
+
+    .card-img-top {
+        height: 350px;
+        object-fit: cover;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-family: 'Super Pulp', sans-serif;
+        color: #343a40;
+    }
+
+    .category-title {
+        font-family: 'Super Pulp', sans-serif;
+        font-size: 2.5rem;
+        color: #343a40;
+    }
+
+    .btn-outline-dark {
+        color: #343a40;
+        border-color: #343a40;
+    }
+
+        .btn-outline-dark:hover {
+            color: #fff;
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+
+    .custom-btn {
+        font-family: 'Gill Sans' sans-serif;
+        background-color: #343a40;
+        color: #fff;
+        border: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .custom-btn:hover {
+            background-color: #495057;
+            color: #fff;
+        }
+
+    .card-footer {
+        background-color: #f8f9fa;
+    }
+</style>

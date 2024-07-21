@@ -1,0 +1,17 @@
+﻿@model ETicaretProje.Controllers.Class1
+@{
+    ViewData["Title"] = "EditUser";
+}
+
+<h1>Api ile Kullanıcı Güncelleme</h1>
+
+<form method="post">
+    <label>ID</label>
+    @Html.TextBoxFor(x=> x.Id, new {@class = "form-control" })
+    <br />
+    <label>Personel</label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    <button class=" btn btn-outline-success">Güncelle</button>
+</form>
+

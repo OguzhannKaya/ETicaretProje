@@ -1,0 +1,75 @@
+﻿@model OrderFormViewModel
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Bilgilerinizi Giriniz</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-action="Siparis" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input asp-for="ProductId" type="hidden" value="@Model.ProductId" />
+                            <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
+                            <div class="form-group">
+                                <label asp-for="User.Name" class="control-label"></label>
+                                <input asp-for="User.Name" value="@Model.User.Name" class="form-control" readonly />
+                                <span asp-validation-for="User.Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="User.Surname" class="control-label"></label>
+                                <input asp-for="User.Surname" value="@Model.User.Surname" class="form-control" readonly />
+                                <span asp-validation-for="User.Surname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="User.Email" class="control-label"></label>
+                                <input asp-for="User.Email" value="@Model.User.Email" class="form-control" readonly />
+                                <span asp-validation-for="User.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Order.Notes" class="control-label"></label>
+                                <input asp-for="Order.Notes" class="form-control" />
+                                <span asp-validation-for="Order.Notes" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Order.Amount" class="control-label"></label>
+                                <input asp-for="Order.Amount" class="form-control" required />
+                                <span asp-validation-for="Order.Amount" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Order.DeliveryDate" class="control-label"></label>
+                                <input asp-for="Order.DeliveryDate" class="form-control" id="deliveryDate" type="date" required />
+                                <span asp-validation-for="Order.DeliveryDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Order.Adress" class="control-label"></label>
+                                <input asp-for="Order.Adress" class="form-control" required />
+                                <span asp-validation-for="Order.Adress" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mt-2">
+                                <input type="submit" value="Sipariş Ver" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var today = new Date();
+        today.setDate(today.getDate() + 2); // Bugünden 2 gün sonrasını hesapla
+
+        var day = String(today.getDate()).padStart(2, '0');
+        var month = String(today.getMonth() + 1).padStart(2, '0'); 
+        var year = today.getFullYear();
+
+        var minDate = year + '-' + month + '-' + day;
+        document.getElementById('deliveryDate').setAttribute('min', minDate);
+    });
+</script>

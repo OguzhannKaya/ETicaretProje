@@ -1,0 +1,94 @@
+﻿@model MultiEntityViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<body>
+    <div class="container mt-5">
+        <partial name="Siparis" model="@Model.OrderFormViewModel" />
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h2>Kategori Detayları</h2>
+                    </div>
+                    <img src="/Img/Categories/@Model.Category.Image" class="img-fluid rounded-start" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Kategori ismi: <span class="content-font">@Model.Category.Name</span></h5>
+                        <p class="card-text">Açıklama: <span class="content-font">@Model.Category.Description</span></p>
+                        <p class="card-text">Fiyatı: <span class="content-font">@Model.Category.Fiyat</span></p>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button class="btn btn-outline-primary flex-shrink-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="bi-cart-fill me-1"></i>
+                                Sipariş ver
+                            </button>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-primary flex-shrink-0" href="/Account/Register">
+                                <i class="bi-cart-fill me-1"></i>
+                                Üye ol
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h2>Örnek ürün</h2>
+                    </div>
+                    <img src="/Img/Products/@Model.Product.Image1" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ürün Adı: <span class="content-font">@Model.Product.Name</span></h5>
+                        <p class="card-text">Ürüne ait açıklama: <span class="content-font">@Model.Product.Description</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<style>
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-title, .card-text {
+        font-family: 'Super Pulp', sans-serif;
+        font-size: 1rem;
+        color: #343a40;
+    }
+
+        .card-title .content-font, .card-text .content-font {
+            font-family: Arial, sans-serif; 
+            font-size: 1rem;
+            color: #343a40;
+        }
+
+    .btn-outline-primary {
+        color: #343a40;
+        border-color: #343a40;
+    }
+
+        .btn-outline-primary:hover {
+            color: #fff;
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+</style>

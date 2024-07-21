@@ -1,0 +1,86 @@
+﻿@model CustomerLoginViewModel
+@{
+    ViewData["Title"] = "Üye Girişi";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+   
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="login-container">
+        <div class="login-box">
+            <h2 class="text-center">Üye Girişi</h2>
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="submit" value="Giriş" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+            <br />
+            <p class="small">Üye değil misin?</p>
+            <a href="/Account/Register" class="btn btn-outline-primary btn-sm">Üye Ol</a>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    .bg {
+        background-image: url('/Img/login.jpg');
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .login-container {
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .login-box {
+        background-color: rgba(255, 255, 255, 0.9); 
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+        max-height: 200%;
+        max-width: 100%;
+        height: auto;
+        width: 40%;
+    }
+
+</style>
+
